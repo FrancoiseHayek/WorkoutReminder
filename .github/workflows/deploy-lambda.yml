@@ -19,7 +19,7 @@ jobs:
           python RunSchedule.py
           python WorkoutSchedule.py
           python VO2MaxSchedule.py
-          zip -r ../WorkoutReminder.zip .
+          zip -r WorkoutReminder.zip .
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
@@ -32,5 +32,5 @@ jobs:
       - name: Update Lambda Code
         run: |
           aws lambda update-function-code \
-            --function-name ${{ secrets.LAMBDA_FUNCTION_NAME }}
+            --function-name ${{ secrets.LAMBDA_FUNCTION_NAME }} \
             --zip-file fileb://WorkoutReminder.zip
