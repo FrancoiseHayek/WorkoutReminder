@@ -1,4 +1,4 @@
-name: CI -> Deploy Lambda
+name: CI & CD
 
 on:
   push:
@@ -7,18 +7,27 @@ on:
     branches: [ main ]
 
 jobs:
-  deploy:
+
+  test:
     runs-on: ubuntu-latest
-
     steps:
-
       - uses: actions/checkout@v3
-
       - name: Run Schedule
         run: |
           python RunSchedule.py
           python WorkoutSchedule.py
           python VO2MaxSchedule.py
+
+  deploy:
+    if: github.event_name == 'push'
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - uses: actions/checkout@v3
+      - name: Create Zip
+        run: |
           zip -r WorkoutReminder.zip .
 
       - name: Configure AWS Credentials
