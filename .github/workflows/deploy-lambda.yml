@@ -14,11 +14,11 @@ jobs:
 
       - uses: actions/checkout@v3
 
-      - name: Run Jsons
+      - name: Run Schedule
         run: |
-          ./RunSchedule.py
-          ./WorkoutSchedule.py
-          ./VO2MaxSchedule.py
+          python RunSchedule.py
+          python WorkoutSchedule.py
+          python VO2MaxSchedule.py
           zip -r ../WorkoutReminder.zip .
 
       - name: Configure AWS Credentials
