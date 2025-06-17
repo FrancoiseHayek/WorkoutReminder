@@ -25,11 +25,11 @@ def weeklySchedule(factor: float, day: datetime):
   weeklyRuns = {}
   weeklyRuns[day] = "Rest"
   day += timedelta(days = 1)
+  weeklyRuns[day] = "{km:2.1f}".format(km = max(float(round(factor * EASY_RUN_MAX)), 1.0))
+  day += timedelta(days = 1)
   weeklyRuns[day] = "Rest"
   day += timedelta(days = 1)
   weeklyRuns[day] = "{km:2.1f}".format(km = max(float(round(factor * MED_RUN_MAX)), 1.0))
-  day += timedelta(days = 1)
-  weeklyRuns[day] = "{km:2.1f}".format(km = max(float(round(factor * EASY_RUN_MAX)), 1.0))
   day += timedelta(days = 1)
   weeklyRuns[day] = "Rest"
   day += timedelta(days = 1)

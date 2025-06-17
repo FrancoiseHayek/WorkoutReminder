@@ -4,7 +4,7 @@ import json
 def weeklySchedule(day: datetime):
 
   weeklyWorkouts = {}
-  weeklyWorkouts[day] = "Legs"
+  weeklyWorkouts[day] = "Legs & Glutes"
   day += timedelta(days = 1)
   weeklyWorkouts[day] = "Rest"
   day += timedelta(days = 1)
