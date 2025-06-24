@@ -54,7 +54,7 @@ def send_reminder(event, context):
   workout = workout_dict[weekday]
   vo2 = vo2_dict[weekday]
 
-  subject = "Today's Workout Sessions:"
+  subject = "Today's Workout Sessions:" if (sms_gateway != os.getenv("TEST_SMS_GATEWAY")) else "Hey Sis, it's Francoise, send me a screenshot of this message pls" 
 
   # Send SMS as an email
   if run == "Rest":
