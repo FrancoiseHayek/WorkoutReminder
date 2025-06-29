@@ -19,10 +19,10 @@ daysOfTheWeek = {
 
 def send_reminder(event, context):
 
-  sms_gateway = os.getenv("SMS_GATEWAY")
+  subscriber_email = os.getenv("SUBSCRIBER_EMAIL")
 
   # Email credentials
-  email = os.getenv("EMAIL")
+  email = os.getenv("SENDER_EMAIL")
   password = os.getenv("PASSWORD")
 
   # Read JSON and convert string keys back to datetime
@@ -54,7 +54,7 @@ def send_reminder(event, context):
   workout = workout_dict[weekday]
   vo2 = vo2_dict[weekday]
 
-  subject = "Today's Workout Sessions:" if (sms_gateway != os.getenv("TEST_SMS_GATEWAY")) else "Hey Sis, it's Francoise, send me a screenshot of this message pls" 
+  subject = "Today's Workout Sessions:" if (subscriber_email != os.getenv("TEST_SUBSCRIBER_EMAIL")) else "Hey, it's Francoise, send me a screenshot of this email pls" 
 
   # Send SMS as an email
   if run == "Rest":
@@ -73,7 +73,7 @@ def send_reminder(event, context):
   msg = EmailMessage()
   msg["Subject"] = subject
   msg["From"]    = email
-  msg["To"]      = sms_gateway
+  msg["To"]      = subscriber_email
   msg.set_content(body)
   
   server.send_message(msg)
