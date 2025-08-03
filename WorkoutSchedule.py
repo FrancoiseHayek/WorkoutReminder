@@ -10,9 +10,9 @@ def weeklySchedule(day: datetime):
   day += timedelta(days = 1)
   weeklyWorkouts[day] = "Chest & Triceps"
   day += timedelta(days = 1)
-  weeklyWorkouts[day] = "Back & Biceps"
-  day += timedelta(days = 1)
   weeklyWorkouts[day] = "Rest"
+  day += timedelta(days = 1)
+  weeklyWorkouts[day] = "Back & Biceps"
   day += timedelta(days = 1)
   weeklyWorkouts[day] = "Rest"
   day += timedelta(days = 1)
